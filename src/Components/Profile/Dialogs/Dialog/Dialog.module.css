@@ -1,0 +1,14 @@
+
+
+.item{
+    width:110px;
+    font-size: 20px;
+    color:rgb(68, 112, 67);
+    font-family: serif;
+    margin: 10px;
+    /* height:30px; */
+    text-align: center;
+}
+.item:hover {
+    background: rgba(215, 241, 129, 0.637)
+}

@@ -1,0 +1,14 @@
+.friends{
+    display: inline-block;
+    padding: 5px;
+    width: 50px;
+    height: 100px;
+    
+}
+.friends img{
+    width: 38px;
+    border-radius: 19px;
+}
+.name{
+    color:red
+}

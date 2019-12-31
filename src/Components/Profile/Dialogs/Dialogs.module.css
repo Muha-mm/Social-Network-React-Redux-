@@ -1,0 +1,27 @@
+.dialogs{
+    display: grid;
+    grid-template-areas: 
+    "d m";
+  
+  
+    grid-template-columns: 2fr  10fr;
+}
+
+
+
+.dialogs_items{
+    grid-area: d;
+    padding:15px;
+    background-color: rgb(60, 240, 120);
+    height: 600px;
+
+}
+
+.messages{
+    grid-area: m;
+    background-color: rgb(75, 247, 104);
+    padding:15px;
+
+}
+
+

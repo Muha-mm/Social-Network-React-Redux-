@@ -1,0 +1,12 @@
+.posts textarea:focus{
+    border: 1px solid #003ef8;
+}
+
+.postsBlock{
+    padding: 15px;
+}
+
+.button{
+    margin-top: 10px;
+}
+  
