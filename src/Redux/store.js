@@ -41,61 +41,41 @@ let store = {
                     {friendName : 'Murad'}
             ]
             }
-        
-    
     },
     //end of state
+    
     rerenderTree() {
-    } ,
+    },
+    
+    _subscribe(observer) {
+        this.rerenderTree = observer;
+    },
+    getSubscribe(){
+        return this._subscribe
+    },
 
     getState() {
         return this._state
     },
 
-    changePostText(text) {
-        this._state.profilePage.newPostText = text;
-        this.rerenderTree(this._state);
-    },
-
-    addPost() {
-        let newPost = {
-            id:10,
-            message:this._state.profilePage.newPostText,
-            likeCount:999
-        } 
-        this._state.profilePage.PostData.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this.rerenderTree(this._state)
-    },
-
-    subscribe(observer) {
-        this.rerenderTree = observer;
+    dispatch(action){
+        // add-post
+        if (action.type === 'ADD-POST'){
+            let newPost = {
+                id:10,
+                message:this._state.profilePage.newPostText,
+                likeCount:999
+            } 
+            this._state.profilePage.PostData.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this.rerenderTree(this._state)
+            }
+        //change-post-text
+        else if(action.type === 'CHANGE-POST-TEXT'){
+            this._state.profilePage.newPostText = action.text;
+            this.rerenderTree(this._state);    
+        }    
     }
 
-       
-}
-
-
-// export let changePostText = (text)
-
-// export let addPost = () => {
-//     let newPost = {
-//         id:10,
-//         message:state.profilePage.newPostText,
-//         likeCount:999
-//         // showId() {console.log(.id)}
-//     } 
-//     state.profilePage.PostData.push(newPost)
-//     state.profilePage.newPostText = '';
-//     // newPost.showId();
-//     rerenderTree(state)
-// }
+};
 export default store;
-
-// export let subscribe = (observer) =>{
-//     rerenderTree = observer;
-// }
-
-console.log(store.getState())
-
-

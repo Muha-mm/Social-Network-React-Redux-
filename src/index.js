@@ -1,6 +1,6 @@
 import './index.css';
 import * as serviceWorker from './serviceWorker';
-import store from './Redux/state'
+import store from './Redux/store'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
@@ -12,10 +12,10 @@ let rerenderTree = (state) =>{
 console.log('rerendered')
 ReactDOM.render(
     <BrowserRouter>
-            <App state = {state} addPost = {store.addPost.bind(store)} changePostText = {store.changePostText.bind(store)} />
+            <App state = {state} dispatch = {store.dispatch.bind(store)} />
     </BrowserRouter> , document.getElementById('root'));
 }
-store.subscribe(rerenderTree);
+store._subscribe(rerenderTree);
 
 //first call
 rerenderTree(store.getState());
