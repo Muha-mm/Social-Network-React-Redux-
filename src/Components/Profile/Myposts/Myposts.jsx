@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./Myposts.module.css";
 import Post from "./Post/Post";
+import {addPost, changePostText} from '../../../Redux/store'
+
 
 const Myposts = (props) => {
 
@@ -8,21 +10,16 @@ const Myposts = (props) => {
   let PostElements = props.profilePage.PostData.map(post => (
     <Post likeCount={post.likeCount} message={post.message} />
   ));
-
+  
     let newPostElement = React.createRef();
-
-
     let newPost = () =>{
-      props.dispatch({type:'ADD-POST'})
+      props.dispatch(addPost())
       // props.addPost();
     }
 
     let newPostText = () =>{
       let text = newPostElement.current.value;      
-      props.dispatch({
-        type:'CHANGE-POST-TEXT',
-        text:text
-      })
+      props.dispatch(changePostText(text))
       // props.changePostText(text);
     }
 

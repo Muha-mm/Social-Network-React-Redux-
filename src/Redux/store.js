@@ -76,6 +76,17 @@ let store = {
             this.rerenderTree(this._state);    
         }    
     }
+    
 
 };
+
+export const changePostText = (text) => {return {
+    type:'CHANGE-POST-TEXT',
+    text:text
+  };};
+  
+export const  addPost = () => {return {
+    type:'ADD-POST'
+  };};
+
 export default store;
