@@ -1,24 +1,24 @@
-import React from 'react';
+// import React from 'react';
 
 
-const MessageComponent = (props) =>{
+// const MessageComponent = (props) =>{
 
-    let messageText = React.createRef();
+//     let messageText = React.createRef();
 
-    let sent = () => {
-        let text = messageText.current.value;
-         alert (text)
+//     let sent = () => {
+//         let text = messageText.current.value;
+//          alert (text)
         
 
         
-    }
-    return(
-    <div>
-                {props.message}
-                <textarea ref = {messageText}></textarea>
-                <button onClick = {sent}>Отправить</button>
-    </div>
-    )
-}
+//     }
+//     return(
+//     <div>
+//                 {props.message}
+//                 <textarea ref = {messageText}></textarea>
+//                 <button onClick = {sent}>Отправить</button>
+//     </div>
+//     )
+// }
 
-export default MessageComponent;
+// export default MessageComponent;

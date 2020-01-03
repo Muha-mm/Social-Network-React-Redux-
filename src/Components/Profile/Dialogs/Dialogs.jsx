@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
+import {changeMessageText, sentMessage} from '../../../Redux/store'
 
 
 
@@ -14,8 +15,17 @@ const Dialogs = (props) =>{
         .map( (m) => <Message message = {m.message} id = {m.id}/>)
 
 
-  
- 
+        let messageText = React.createRef();
+
+        let change = () => {
+            let text = messageText.current.value;
+            props.dispatch(changeMessageText(text))
+
+        }
+            
+        let sent = () =>{
+            props.dispatch(sentMessage())
+        }
    
    
         return(
@@ -24,12 +34,11 @@ const Dialogs = (props) =>{
                 {dialogElements}
             </div>
 
-            <div className = {classes.line}></div>
 
             <div className={classes.messages}>
                 {messageElements}
-                
-               
+                <textarea ref = {messageText} onChange = {change} value = {props.state.newMessageText}></textarea>
+                <button onClick = {sent}>Отправить</button>
             </div>
         </div>
        

@@ -20,6 +20,7 @@ let store = {
                     {message:'русак', id: '3'},
                     {message:'я', id: '4'}
                 ],
+                newMessageText : 'malaev',
             
                 dialogs : [
                     {name:'Andrew', id: '1'},
@@ -74,19 +75,57 @@ let store = {
         else if(action.type === 'CHANGE-POST-TEXT'){
             this._state.profilePage.newPostText = action.text;
             this.rerenderTree(this._state);    
+        } 
+        
+        else if (action.type === 'ADD-MESSAGE'){
+            let newMessage = {
+                id:10,
+                message:this._state.dialogsPage.newMessageText,
+            }
+            this._state.dialogsPage.messages.push(newMessage);
+            this._state.dialogsPage.newMessageText = '';
+            this.rerenderTree(this._state)
+
+            }
+        else if(action.type === 'CHANGE-MESSAGE-TEXT'){
+            this._state.dialogsPage.newMessageText = action.textMessage;
+            this.rerenderTree(this._state);    
         }    
     }
     
 
 };
+// export let addMessage = () =>{
+//     let newMessage = {
+//         id:10,
+//         message:this._state.dialogsPage.newMessageText,
+//     }
+//     this._state.profilePage.PostData.push(newMessage);
+//     this._state.dialogsPage.newMessageText = '';
+//     this.rerenderTree(this._state)    
+// }
 
-export const changePostText = (text) => {return {
+// export let changeMessageText = (text) =>{
+//     this._state.dialogsPage.newMessageText = text;
+//     this.rerenderTree(this._state);    
+// }
+
+export const changePostText = (text) => ({
     type:'CHANGE-POST-TEXT',
     text:text
-  };};
+  })
   
-export const  addPost = () => {return {
+export const  addPost = () => ({
     type:'ADD-POST'
-  };};
+  })
+
+export const changeMessageText = (text) => ({
+    type : 'CHANGE-MESSAGE-TEXT',
+    textMessage:text
+  })
+    
+export const sentMessage = () =>({
+    type : 'ADD-MESSAGE'
+})
 
 export default store;
