@@ -1,3 +1,7 @@
+import {dialogsReducer} from './reducer/dialogsPageReducer';
+import {profileReducer} from './reducer/profilePageReducer';
+import {sideBarReducer} from './reducer/sideBarReducer';
+
 let store = {
 
         _state : {
@@ -15,17 +19,17 @@ let store = {
             },
             dialogsPage : {
                 messages : [
-                    {message:'Шома', id: '1'},
-                    {message:'русак', id: '2'},
-                    {message:'русак', id: '3'},
-                    {message:'я', id: '4'}
+                    {message:'Sandy', id: '1'},
+                    {message:'HI', id: '2'},
+                    {message:' h r u?', id: '3'},
+                    {message:'got a job as a react developer?', id: '4'}
                 ],
-                newMessageText : 'malaev',
+                newMessageText : 'yes, almost...',
             
                 dialogs : [
                     {name:'Andrew', id: '1'},
                     {name:'Maxim', id: '2'},
-                    {name:'Shamil', id: '3'},
+                    {name:'Sandy', id: '3'},
                     {name:'Muhammad', id: '4'}
                 ]
             },
@@ -61,71 +65,13 @@ let store = {
 
     dispatch(action){
         // add-post
-        if (action.type === 'ADD-POST'){
-            let newPost = {
-                id:10,
-                message:this._state.profilePage.newPostText,
-                likeCount:999
-            } 
-            this._state.profilePage.PostData.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this.rerenderTree(this._state)
-            }
-        //change-post-text
-        else if(action.type === 'CHANGE-POST-TEXT'){
-            this._state.profilePage.newPostText = action.text;
-            this.rerenderTree(this._state);    
-        } 
-        
-        else if (action.type === 'ADD-MESSAGE'){
-            let newMessage = {
-                id:10,
-                message:this._state.dialogsPage.newMessageText,
-            }
-            this._state.dialogsPage.messages.push(newMessage);
-            this._state.dialogsPage.newMessageText = '';
-            this.rerenderTree(this._state)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.sidebar = sideBarReducer(this._state.sidebar, action);
 
-            }
-        else if(action.type === 'CHANGE-MESSAGE-TEXT'){
-            this._state.dialogsPage.newMessageText = action.textMessage;
-            this.rerenderTree(this._state);    
-        }    
+        this.rerenderTree(this._state);
     }
-    
-
+     
 };
-// export let addMessage = () =>{
-//     let newMessage = {
-//         id:10,
-//         message:this._state.dialogsPage.newMessageText,
-//     }
-//     this._state.profilePage.PostData.push(newMessage);
-//     this._state.dialogsPage.newMessageText = '';
-//     this.rerenderTree(this._state)    
-// }
-
-// export let changeMessageText = (text) =>{
-//     this._state.dialogsPage.newMessageText = text;
-//     this.rerenderTree(this._state);    
-// }
-
-export const changePostText = (text) => ({
-    type:'CHANGE-POST-TEXT',
-    text:text
-  })
-  
-export const  addPost = () => ({
-    type:'ADD-POST'
-  })
-
-export const changeMessageText = (text) => ({
-    type : 'CHANGE-MESSAGE-TEXT',
-    textMessage:text
-  })
-    
-export const sentMessage = () =>({
-    type : 'ADD-MESSAGE'
-})
 
 export default store;

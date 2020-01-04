@@ -2,7 +2,7 @@ import React from 'react';
 import classes from './Dialogs.module.css';
 import Dialog from './Dialog/Dialog';
 import Message from './Message/Message';
-import {changeMessageText, sentMessage} from '../../../Redux/store'
+import {changeMessageText, sentMessage} from '../../../Redux/reducer/dialogsPageReducer'
 
 
 
