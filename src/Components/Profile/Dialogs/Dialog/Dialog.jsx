@@ -7,7 +7,7 @@ const Dialog = (props) =>{
   
     return(
         <div className={classes.item}>
-            <NavLink to = {'/Dialogs/' + props.id } >  {props.name}  </NavLink> 
+            <NavLink to = {'/Dialogs/' + props.id} activeClassName = {classes.activeLink}>  {props.name}  </NavLink> 
         </div>
     )
 }

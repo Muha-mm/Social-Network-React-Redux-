@@ -12,3 +12,7 @@
 .item:hover {
     background: rgba(215, 241, 129, 0.637)
 }
+
+a.activeLink{
+    color: rgb(4, 75, 25);
+}
